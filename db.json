@@ -1,0 +1,15 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "name": "Arun",
+      "code": "AES-1",
+      "designation": "SE",
+      "salary": "20000"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

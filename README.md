@@ -54,7 +54,7 @@ This line in head section
 5.Once above steps completed run the below command to start Json-Server
   json-server --watch db.json
 
-## Steps to Configure the Project**
+## Steps to Configure the Project
 1.run npm install
 
 2.start Json-Server using below command

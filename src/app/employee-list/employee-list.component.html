@@ -1,0 +1,74 @@
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+<h3 style="color: aliceblue;">Employee List Page</h3>
+<div class="d-flex">
+  <button (click)="onAddClick()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#employeeModal">Add Employee</button>
+</div>
+  </div>
+</nav>
+
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Employee Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Code</th>
+      <th scope="col">Designation</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of empData">
+      <td>{{emp.id}}</td>
+      <td>{{emp.name}}</td>
+      <td>{{emp.code}}</td>
+      <td>{{emp.designation}}</td>
+      <td>{{emp.salary}}</td>
+      <td>
+        <button (click)="onEditEmp(emp)" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#employeeModal">Edit</button>
+        <button type="button" class="btn btn-danger mx-3" (click)=deleteEmp(emp)>Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="employeeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="employeeModalLabel">Employee Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="empformValue">
+          <div class="mb-3">
+            <label for="EmpId" class="form-label">Employee Id</label>
+            <input type="text" formControlName="id" class="form-control" id="EmpId">
+            </div>
+          <div class="mb-3">
+            <label for="Name" class="form-label">Name</label>
+            <input type="text" formControlName="name" class="form-control" id="Name">
+          </div>
+          <div class="mb-3">
+            <label for="Code" class="form-label">Code</label>
+            <input type="text" formControlName="code" class="form-control" id="Code">
+          </div>
+          <div class="mb-3">
+            <label for="Designation" class="form-label">Designation</label>
+            <input type="text" formControlName="designation" class="form-control" id="Designation">
+          </div>
+          <div class="mb-3">
+            <label for="Salary" class="form-label">Salary</label>
+            <input type="text" formControlName="salary" class="form-control" id="Salary">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" *ngIf="showAdd" id="AddEmp" class="btn btn-primary" (click)="postEmp()">Save Employee</button>
+        <button type="button" *ngIf="showUpdate" id="UpdateEmp" class="btn btn-primary" (click)="updateEmp()">Update Employee</button>
+      </div>
+    </div>
+  </div>
+</div>
